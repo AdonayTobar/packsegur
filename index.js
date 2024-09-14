@@ -125,7 +125,7 @@ const negocios = [
     nombre: 'Pizza Litte Caesars',
     categorias: ['Pizza', 'Almuerzo'],
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoaORguKiAaXYq2m3P73HXpKEvSZ3bsA5R5A&s',
-    url: '/cesar.html',
+    url: '/Cesar/cesar.html',
     menu: [
       { id: 1, nombre: 'Pizza Pepperoni $5', imagen: 'https://pizzapizza.com.sv/wp-content/uploads/2021/01/Pepperoni.jpg', precio: 5.00 },
       { id: 2, nombre: 'Pizza Jamon', imagen: 'https://pizzapizza.com.sv/wp-content/uploads/2021/01/Jamon.jpg', precio: 5.00 },
@@ -134,8 +134,8 @@ const negocios = [
   },
   {
     id: 1,
-    nombre: 'Pizza Litte Caesars',
-    categorias: ['Pizza', 'Almuerzo'],
+    nombre: 'Pollo',
+    categorias: ['Pollo', 'Almuerzo'],
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoaORguKiAaXYq2m3P73HXpKEvSZ3bsA5R5A&s',
     url: '/cesar.html',
     menu: [
@@ -146,8 +146,8 @@ const negocios = [
   },
   {
     id: 1,
-    nombre: 'Pizza Litte Caesars',
-    categorias: ['Pizza', 'Almuerzo'],
+    nombre: 'Pupusas',
+    categorias: ['Cena', 'Almuerzo'],
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoaORguKiAaXYq2m3P73HXpKEvSZ3bsA5R5A&s',
     url: '/cesar.html',
     menu: [
@@ -161,26 +161,69 @@ const negocios = [
 ];
 
 //Declarando el array del carrito
+// Verificar si ya existe un carrito en localStorage
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+// Función para actualizar el conteo de productos en el carrito en la página principal
+function actualizarCarritoPrincipal() {
+  const cartCount = document.getElementById('cart-count');
+
+  // Calcular el total de productos en el carrito
+  const totalItems = carrito.reduce((total, item) => total + item.cantidad, 0);
+
+  // Mostrar el total de productos en el contador del carrito
+  cartCount.textContent = totalItems;
+}
+
+// Guardar el carrito en localStorage cada vez que se actualice
+localStorage.setItem('carrito', JSON.stringify(carrito));
+
+// Llamar a la función para actualizar el contador en la página principal
+actualizarCarritoPrincipal();
 
 
 
 //Mostrando los negocios del array
-// Filtrar negocios por categoría
-const filtrarPorCategoria = (categoria) => {
-  return negocios.filter((negocio) => negocio.categorias.includes(categoria));
-};
 
-// Ejemplo de cómo obtener los negocios de la categoría "Pizza"
-const negociosPizza = filtrarPorCategoria('Pizza');
-console.log(negociosPizza);
+
 
 const contenedor = document.getElementById('negocios-afiliados');
 
-    negocios.forEach((negocio) => {
-      contenedor.innerHTML += `
-        <div class="negocio" onclick="window.location.href='${negocio.url}'">
-          <img src="${negocio.logo}" alt="${negocio.nombre}">
-          <h3>${negocio.nombre}</h3>
-        </div>
-      `;
-    });
+    const searchInput = document.getElementById('search');//Obteniendo el input buscador
+
+    // Función para mostrar todos los negocios
+function mostrarNegocios(negocios) {
+  contenedor.innerHTML = ''; // Limpiar contenido actual
+  negocios.forEach((negocio) => {
+    contenedor.innerHTML += `
+      <div class="negocio" onclick="window.location.href='${negocio.url}'">
+        <img src="${negocio.logo}" alt="${negocio.nombre}">
+        <h3>${negocio.nombre}</h3>
+      </div>
+    `;
+  });
+}
+
+// Mostrar todos los negocios al cargar la página
+mostrarNegocios(negocios);
+
+// Escuchar el evento de búsqueda
+searchInput.addEventListener('input', function() {
+  const query = searchInput.value.toLowerCase();
+  
+  if (query === '') {
+    mostrarNegocios(negocios); // Si no hay búsqueda, mostrar todos los negocios
+  } else {
+    // Filtrar los negocios por el nombre o las categorías
+    const resultadosFiltrados = negocios.filter(negocio => 
+      negocio.nombre.toLowerCase().includes(query) ||
+      negocio.categorias.some(categoria => categoria.toLowerCase().includes(query))
+    );
+
+    // Mostrar solo los resultados filtrados
+    mostrarNegocios(resultadosFiltrados);
+  }
+});
+
+
+

@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+        background: #fff;
+}
+.ocul {
+    display: none !important;
+}
+
+/*Menu*/
+
+.menu-prin {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    transition: top 0.3s;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #465362;
+    padding: 0.5rem 0;
+    border-radius: 0 0  0.8rem 0.8rem;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1rem;
+    cursor: pointer;
+}
+
+.logo img {
+    width: 2rem;
+}
+.logo h3 {
+    padding-left: 0.5rem;
+    font-size: 1.5rem;
+    color: aliceblue;
+}
+
+
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15%;
+}
+
+#cart-count {
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    margin-bottom: -10px; /* Ajusta la separación entre el número y el ícono */
+    margin-left: 1.5rem;
+}
+.cart-link {
+    text-decoration: none;
+}
+
+.cart {
+    width: 40px;
+    height: 40px;
+}
+
+/*Seccion de atras*/
+.atras {
+    margin-top: 5rem;
+    display: flex;
+}
+.atras-log{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.atras img{
+    width: 1.5rem;
+    margin-left: 1rem;
+}
+.atras h3 {
+    margin-left: 0.5rem;
+}
+
+
+/*Esto es el Cuerpo*/
+
+#product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+}
+
+.product-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 20px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.product-card h3 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.product-card p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.product-card button {
+  background-color: #ff4500;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.product-card button:hover {
+  background-color: #e63900;
+}
+
+#cart-count {
+  font-weight: bold;
+  color: yellow;
+}
+
+
+
+
+/*REsponsivos*/
+@media (max-width: 500px) {
+
+    .cart-container img {
+    width: 1.5rem;
+}
+#cart-count {
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    margin-bottom: -15px; /* Ajusta la separación entre el número y el ícono */
+    margin-left: 1.5rem;
+}
+}

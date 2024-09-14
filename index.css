@@ -104,6 +104,7 @@ input#search:focus {
     padding-top: 0rem;
     background-color: #465362;
     color: aliceblue;
+    border-radius: 0 0  0.8rem 0.8rem;
 }
 
 .lista-pro::-webkit-scrollbar {
@@ -148,6 +149,7 @@ input#search:focus {
     text-align: center;
     transition: transform 0.3s ease, background-color 0.3s ease;
     cursor: pointer; /* Añade un cursor de mano para indicar que es clicable */
+    border-radius: 1rem;
 }
 
 .negocio:hover {
