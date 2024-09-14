@@ -194,7 +194,7 @@ input#search {
     /*Menu*/
 .search{
     width: 75%;
-    max-width: 10rem;
+    max-width: 13rem;
 }
 input#search {
     width: 100%;
@@ -202,8 +202,15 @@ input#search {
 .cart-container img {
     width: 1.5rem;
 }
+#negocios-afiliados {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en varias filas */
+    gap: 10px; /* Espacio entre los elementos */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    padding: 10px;
+}
 .negocio {
-    width: 8rem;
+    width: 5rem;
     background-color: #f4fffd;
     display: flex;
     flex-direction: column;
@@ -212,6 +219,16 @@ input#search {
     text-align: center;
     transition: transform 0.3s ease, background-color 0.3s ease;
     cursor: pointer; /* Añade un cursor de mano para indicar que es clicable */
+}
+.negocio h3 {
+    font-size: 0.8rem;
+    color: #333;
+}
+#cart-count {
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    margin-bottom: -18px; /* Ajusta la separación entre el número y el ícono */
+    margin-left: 1.5rem;
 }
 }
 
