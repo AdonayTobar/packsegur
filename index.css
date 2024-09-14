@@ -167,4 +167,52 @@ input#search:focus {
 }
 
 
+/*REsponsivo*/
+
+
+
+@media (max-width: 768px) {
+
+    /*Menu*/
+
+input#search {
+    width: 100%;
+}
+.cart-container img {
+    width: 2rem;
+}
+}
+
+
+
+
+
+
+
+@media (max-width: 450px) {
+
+    /*Menu*/
+.search{
+    width: 75%;
+    max-width: 10rem;
+}
+input#search {
+    width: 100%;
+}
+.cart-container img {
+    width: 1.5rem;
+}
+.negocio {
+    width: 8rem;
+    background-color: #f4fffd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer; /* Añade un cursor de mano para indicar que es clicable */
+}
+}
+
 
