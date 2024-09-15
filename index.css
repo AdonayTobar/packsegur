@@ -74,20 +74,21 @@ nav {
 input#search {
     width: 100%;
     padding: 10px 15px;
-    border: 2px solid #ddd;
+    border: 2px solid #46536217;
     border-radius: 25px;
     font-size: 16px;
     outline: none;
     transition: border 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px #46536218;
+    background-color: aliceblue;
 }
 
 input#search::placeholder {
-    color: #aaa;
+    color: #46536279;
 }
 
 input#search:focus {
-    border: 2px solid #007BFF;
+    border: 1px solid #46536262;
     box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
 }
 
@@ -143,7 +144,7 @@ input#search:focus {
 .negocio {
     width: 10rem;
     height: 12.5rem;
-    background-color: #f4fffd;
+    background-color: aliceblue;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -154,7 +155,7 @@ input#search:focus {
 
 .negocio:hover {
     transform: translateY(-10px); /* Efecto de levantamiento al hacer hover */
-    background-color: #e0e0e0; /* Cambio de color en hover */
+    background-color: #f4fffd; /* Cambio de color en hover */
 }
 
 .negocio img {
@@ -165,7 +166,7 @@ input#search:focus {
 
 .negocio h3 {
     font-size: 18px;
-    color: #333;
+    color: #465362;
 }
 
 
@@ -214,7 +215,7 @@ input#search {
 .negocio {
     width: 6rem;
     height: 8rem;
-    background-color: #f4fffd;
+    background-color: aliceblue;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -229,7 +230,7 @@ input#search {
 }
 .negocio h3 {
     font-size: 0.8rem;
-    color: #333;
+    color: #465362;
 }
 #cart-count {
     font-weight: bold;
