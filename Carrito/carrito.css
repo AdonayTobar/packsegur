@@ -96,6 +96,63 @@ input {
     width: 2rem;
 }
 
+
+/*Formulario de datos del cliente*/
+.datos-cli {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#order-form {
+  width: 100%;
+  max-width: 350px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#order-form label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+  color: #333;
+}
+
+#order-form input,
+#order-form textarea {
+  width: 90%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s;
+}
+
+#order-form input:focus,
+#order-form textarea:focus {
+  border-color: #3498db;
+}
+
+#order-form button {
+  width: 100%;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 12px 0;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#order-form button:hover {
+  background-color: #2980b9;
+}
+
 @media (max-width: 500px) {
     .cart-item img{
         width: 4rem;

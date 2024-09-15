@@ -41,7 +41,7 @@ const negocios = [
     nombre: 'Pizza Litte Caesars',
     categorias: ['Pizza', 'Almuerzo'],
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoaORguKiAaXYq2m3P73HXpKEvSZ3bsA5R5A&s',
-    url: '/cesar.html',
+    url: '/Cesar/cesar.html',
     menu: [
       { id: 1, nombre: 'Pizza Pepperoni $5', imagen: 'https://pizzapizza.com.sv/wp-content/uploads/2021/01/Pepperoni.jpg', precio: 5.00 },
       { id: 2, nombre: 'Pizza Jamon', imagen: 'https://pizzapizza.com.sv/wp-content/uploads/2021/01/Jamon.jpg', precio: 5.00 },
@@ -58,11 +58,11 @@ const negocios = [
     ]
   },
   {
-    id: 1,
-    nombre: 'Pizza Litte Caesars',
+    id: 2,
+    nombre: 'Subway',
     categorias: ['Pizza', 'Almuerzo'],
-    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoaORguKiAaXYq2m3P73HXpKEvSZ3bsA5R5A&s',
-    url: '/cesar.html',
+    logo: 'https://scontent.fsal3-1.fna.fbcdn.net/v/t39.30808-6/405687337_725363336291162_8952362230077025636_n.png?_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=so2OZ2qU95YQ7kNvgHDcawR&_nc_ht=scontent.fsal3-1.fna&_nc_gid=A8iokYGBGIuvI3qfsXetvOX&oh=00_AYCeDgMsLpJrmXcaJxwpCdlzxQQPjWDYc3yc2tZJRfFujw&oe=66EC2A77',
+    url: '/Subway/subway.html',
     menu: [
       { id: 1, nombre: 'Pizza Pepperoni $5', imagen: 'https://pizzapizza.com.sv/wp-content/uploads/2021/01/Pepperoni.jpg', precio: 5.00 },
       { id: 2, nombre: 'Pizza Jamon', imagen: 'https://pizzapizza.com.sv/wp-content/uploads/2021/01/Jamon.jpg', precio: 5.00 },
@@ -74,7 +74,7 @@ const negocios = [
     nombre: 'Pizza Litte Caesars',
     categorias: ['Pizza', 'Almuerzo'],
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoaORguKiAaXYq2m3P73HXpKEvSZ3bsA5R5A&s',
-    url: '/cesar.html',
+    url: '/subway.html',
     menu: [
       { id: 1, nombre: 'Pizza Pepperoni $5', imagen: 'https://pizzapizza.com.sv/wp-content/uploads/2021/01/Pepperoni.jpg', precio: 5.00 },
       { id: 2, nombre: 'Pizza Jamon', imagen: 'https://pizzapizza.com.sv/wp-content/uploads/2021/01/Jamon.jpg', precio: 5.00 },

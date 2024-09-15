@@ -14,10 +14,8 @@ function mostrarCarrito() {
     total += item.precio * item.cantidad;
     cartItems.innerHTML += `
       <div class="cart-item">
-        <div clas="ite">
         <img src="${item.imagen}" alt="${item.nombre}">
         <h3>${item.nombre}</h3>
-        </div>
         <p>Precio: $${item.precio.toFixed(2)}</p>
         <p>Cantidad: <input type="number" value="${item.cantidad}" min="1" onchange="actualizarCantidad(${index}, this.value)"></p>
         <button onclick="eliminarProducto(${index})">X</button>
@@ -44,13 +42,29 @@ function eliminarProducto(index) {
 
 // Función para finalizar la compra
 document.getElementById('checkout-btn').addEventListener('click', () => {
+  // Obtener datos del formulario
+  const nombre = document.getElementById('nombre').value;
+  const telefono = document.getElementById('telefono').value;
+  const ubicacion = document.getElementById('ubicacion').value;
+  const instrucciones = document.getElementById('instrucciones').value;
+
+  // Validar que los campos no estén vacíos
+  if (!nombre || !telefono || !ubicacion) {
+    alert('Por favor, rellena todos los campos obligatorios.');
+    return;
+  }
+
   const total = carrito.reduce((sum, item) => sum + item.precio * item.cantidad, 0);
   const mensaje = carrito.map(item => `${item.nombre} x${item.cantidad} - $${(item.precio * item.cantidad).toFixed(2)}`).join('\n');
-  const mensajeFinal = `Pedido:\n${mensaje}\nTotal: $${total.toFixed(2)}`;
+  
+  // Añadir datos del cliente al mensaje final
+  const mensajeFinal = `Pedido:\n${mensaje}\nTotal: $${total.toFixed(2)}\n\nDatos del cliente:\nNombre: ${nombre}\nTeléfono: ${telefono}\nUbicación: ${ubicacion}\nInstrucciones adicionales: ${instrucciones}\n\n*Los precios no incluyen delivery*`;
+
   const numeroWhatsApp = '72757591';
   const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensajeFinal)}`;
 
   window.open(urlWhatsApp, '_blank');
+
   // Limpiar el carrito después de finalizar la compra
   carrito = [];
   localStorage.removeItem('carrito');
