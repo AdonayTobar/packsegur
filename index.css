@@ -27,7 +27,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     background-color:aliceblue;
-    padding: 0.5rem 0;
+    padding: 0.5rem 0 0 0;
 }
 
 .logo {
@@ -39,7 +39,7 @@ nav {
 }
 
 .logo img {
-    width: 2rem;
+    width: 2.5rem;
 }
 
 
@@ -75,7 +75,7 @@ input#search {
     width: 100%;
     padding: 10px 15px;
     border: 2px solid #46536217;
-    border-radius: 25px;
+    border-radius: 16px;
     font-size: 16px;
     outline: none;
     transition: border 0.3s ease;
