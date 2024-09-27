@@ -60,13 +60,13 @@ const negocios = [
   {
     id: 2,
     nombre: 'Subway',
-    categorias: ['Pizza', 'Almuerzo'],
+    categorias: ['Almuerzo'],
     logo: 'https://scontent.fsal3-1.fna.fbcdn.net/v/t39.30808-6/405687337_725363336291162_8952362230077025636_n.png?_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=so2OZ2qU95YQ7kNvgHDcawR&_nc_ht=scontent.fsal3-1.fna&_nc_gid=A8iokYGBGIuvI3qfsXetvOX&oh=00_AYCeDgMsLpJrmXcaJxwpCdlzxQQPjWDYc3yc2tZJRfFujw&oe=66EC2A77',
     url: '/Subway/subway.html',
     menu: [
-      { id: 1, nombre: 'Pizza Pepperoni $5', imagen: 'https://pizzapizza.com.sv/wp-content/uploads/2021/01/Pepperoni.jpg', precio: 5.00 },
-      { id: 2, nombre: 'Pizza Jamon', imagen: 'https://pizzapizza.com.sv/wp-content/uploads/2021/01/Jamon.jpg', precio: 5.00 },
-      { id: 3, nombre: 'Super Chesse Gigante', imagen: 'https://pizzapizza.com.sv/wp-content/uploads/2022/07/Super-Cheese.jpg', precio: 7.75 }
+      { id: 11, nombre: 'Subway2', imagen: 'https://pizzapizza.com.sv/wp-content/uploads/2021/01/Pepperoni.jpg', precio: 6.00 },
+      { id: 22, nombre: 'Subway3', imagen: 'https://pizzapizza.com.sv/wp-content/uploads/2021/01/Jamon.jpg', precio: 7.00 },
+      { id: 33, nombre: 'Subway1', imagen: 'https://pizzapizza.com.sv/wp-content/uploads/2022/07/Super-Cheese.jpg', precio: 7.75 }
     ]
   },
   {
@@ -169,6 +169,10 @@ const negocios = [
   // Agrega más negocios aquí
 ];
 
+//Guardando el array de negocios en localstorage
+// Guardar en localStorage
+localStorage.setItem('negocios', JSON.stringify(negocios));
+
 //Declarando el array del carrito
 // Verificar si ya existe un carrito en localStorage
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -176,13 +180,17 @@ let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 // Función para actualizar el conteo de productos en el carrito en la página principal
 function actualizarCarritoPrincipal() {
   const cartCount = document.getElementById('cart-count');
-
-  // Calcular el total de productos en el carrito
-  const totalItems = carrito.reduce((total, item) => total + item.cantidad, 0);
+  
+  // Calcular el total de productos en el carrito, sumando por negocio y producto
+  const totalItems = carrito.reduce((total, negocio) => {
+    const productosEnNegocio = negocio.productos.reduce((subtotal, producto) => subtotal + producto.cantidad, 0);
+    return total + productosEnNegocio;
+  }, 0);
 
   // Mostrar el total de productos en el contador del carrito
   cartCount.textContent = totalItems;
 }
+
 
 // Guardar el carrito en localStorage cada vez que se actualice
 localStorage.setItem('carrito', JSON.stringify(carrito));

@@ -18,12 +18,6 @@ negocioSeleccionado.menu.forEach(producto => {
 // Seleccionar el contenedor donde se mostrará el negocio
 const detalleNegocio = document.getElementById('detalle-negocio');
 
-// Insertar el nombre y el logo del negocio en el contenedor
-detalleNegocio.innerHTML = `
-    <section style="text-align: center; margin: 0px;">
-        <img src="${negocioSeleccionado.logo}" alt="${negocioSeleccionado.nombre}" style="width: 100%; max-width: 500px; height: auto; margin-top: 20px;">
-    </section>
-`;
 
 //Esto es para el modal
 // Función para abrir el modal y mostrar la imagen ampliada
@@ -50,19 +44,42 @@ window.onclick = function(event) {
 
 
 //Esto es para el carrito
-// Recuperar el carrito de localStorage
-carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+// Cargar el carrito desde localStorage si existe
+if (localStorage.getItem('carrito')) {
+  carrito = JSON.parse(localStorage.getItem('carrito'));
+}
+
+// Guardar el carrito en localStorage
+function guardarCarrito() {
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  actualizarContadorCarrito();
+}
 
 // Función para agregar producto al carrito
 function agregarAlCarrito(idProducto) {
   const productoSeleccionado = negocioSeleccionado.menu.find(producto => producto.id === idProducto);
-  
-  // Verificar si ya existe en el carrito
-  const itemEnCarrito = carrito.find(item => item.id === idProducto);
-  if (itemEnCarrito) {
-    itemEnCarrito.cantidad += 1;
+
+  // Buscar si el negocio ya está en el carrito
+  let negocioEnCarrito = carrito.find(item => item.negocioId === negocioSeleccionado.id);
+
+  if (negocioEnCarrito) {
+    // Si el negocio ya está en el carrito, buscar si el producto ya está en ese negocio
+    const productoEnNegocio = negocioEnCarrito.productos.find(producto => producto.id === idProducto);
+    
+    if (productoEnNegocio) {
+      // Si el producto ya está, aumentar la cantidad
+      productoEnNegocio.cantidad += 1;
+    } else {
+      // Si el producto no está, agregarlo al array de productos del negocio
+      negocioEnCarrito.productos.push({ ...productoSeleccionado, cantidad: 1 });
+    }
   } else {
-    carrito.push({ ...productoSeleccionado, cantidad: 1 });
+    // Si el negocio no está en el carrito, agregar un nuevo objeto de negocio con el producto
+    carrito.push({
+      negocioId: negocioSeleccionado.id,
+      nombreNegocio: negocioSeleccionado.nombre,
+      productos: [{ ...productoSeleccionado, cantidad: 1 }]
+    });
   }
 
   // Guardar el carrito actualizado en localStorage
@@ -72,12 +89,22 @@ function agregarAlCarrito(idProducto) {
   actualizarCarrito();
 }
 
+
+
+
 // Función para actualizar el carrito (en la página secundaria, si aplica)
 function actualizarCarrito() {
   const cartCount = document.getElementById('cart-count');
-  const totalItems = carrito.reduce((total, item) => total + item.cantidad, 0);
+  
+  // Contar el total de productos en todos los negocios
+  const totalItems = carrito.reduce((total, negocio) => {
+    const productosEnNegocio = negocio.productos.reduce((subtotal, producto) => subtotal + producto.cantidad, 0);
+    return total + productosEnNegocio;
+  }, 0);
+
   cartCount.textContent = totalItems;
 }
+
 
 // Llamar a la función para actualizar el contador cuando cargue la página secundaria
 actualizarCarrito();

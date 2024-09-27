@@ -1,5 +1,8 @@
 // Obtener el carrito del localStorage
-carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+// Recuperar el array de negocios de localStorage
+const negocios = JSON.parse(localStorage.getItem('negocios')) || [];
 
 // Referencias a elementos del DOM
 const cartItems = document.getElementById('cart-items');
@@ -10,34 +13,56 @@ function mostrarCarrito() {
   cartItems.innerHTML = '';
   let total = 0;
 
-  carrito.forEach((item, index) => {
-    total += item.precio * item.cantidad;
-    cartItems.innerHTML += `
-      <div class="cart-item">
-        <img src="${item.imagen}" alt="${item.nombre}">
-        <h3>${item.nombre}</h3>
-        <p>Precio: $${item.precio.toFixed(2)}</p>
-        <p>Cantidad: <input type="number" value="${item.cantidad}" min="1" onchange="actualizarCantidad(${index}, this.value)"></p>
-        <button onclick="eliminarProducto(${index})">X</button>
-      </div>
-    `;
+  carrito.forEach((negocio, negocioIndex) => {
+    cartItems.innerHTML += `<h2>${negocio.nombreNegocio}</h2>`;
+    
+    negocio.productos.forEach((producto, productoIndex) => {
+      total += producto.precio * producto.cantidad;
+      cartItems.innerHTML += `
+        <div class="cart-item">
+          <img src="${producto.imagen}" alt="${producto.nombre}">
+          <h3>${producto.nombre}</h3>
+          <p>Precio: $${producto.precio.toFixed(2)}</p>
+          <p>Cantidad: <input type="number" value="${producto.cantidad}" min="1" onchange="actualizarCantidad(${negocioIndex}, ${productoIndex}, this.value)"></p>
+          <button onclick="eliminarProducto(${negocioIndex}, ${productoIndex})">X</button>
+        </div>
+      `;
+    });
   });
 
   totalPrice.textContent = total.toFixed(2);
 }
 
 // Función para actualizar la cantidad de un producto
-function actualizarCantidad(index, cantidad) {
-  carrito[index].cantidad = parseInt(cantidad);
+function actualizarCantidad(negocioIndex, productoIndex, cantidad) {
+  carrito[negocioIndex].productos[productoIndex].cantidad = parseInt(cantidad);
   localStorage.setItem('carrito', JSON.stringify(carrito));
   mostrarCarrito();
 }
 
 // Función para eliminar un producto del carrito
-function eliminarProducto(index) {
-  carrito.splice(index, 1);
+function eliminarProducto(negocioIndex, productoIndex) {
+  carrito[negocioIndex].productos.splice(productoIndex, 1);
+
+  // Si no hay más productos en el negocio, eliminar el negocio del carrito
+  if (carrito[negocioIndex].productos.length === 0) {
+    carrito.splice(negocioIndex, 1);
+  }
+
   localStorage.setItem('carrito', JSON.stringify(carrito));
   mostrarCarrito();
+}
+
+// Función para agrupar productos por tienda
+function agruparProductosPorTienda(carrito, negocios) {
+  const productosAgrupados = {};
+
+  carrito.forEach(negocio => {
+    productosAgrupados[negocio.nombreNegocio] = negocio.productos;
+  });
+
+  console.log('Productos agrupados por tienda:', productosAgrupados); // Debugging line
+  return productosAgrupados;
 }
 
 // Función para finalizar la compra
@@ -54,11 +79,21 @@ document.getElementById('checkout-btn').addEventListener('click', () => {
     return;
   }
 
-  const total = carrito.reduce((sum, item) => sum + item.precio * item.cantidad, 0);
-  const mensaje = carrito.map(item => `${item.nombre} x${item.cantidad} - $${(item.precio * item.cantidad).toFixed(2)}`).join('\n');
-  
+  // Agrupar productos por tienda
+  const productosPorTienda = agruparProductosPorTienda(carrito, negocios);
+
+  // Crear el mensaje del pedido
+  let mensaje = '';
+  let mensajeFinal = '';
+  for (const [tiendaNombre, productos] of Object.entries(productosPorTienda)) {
+    let totalTienda = productos.reduce((sum, item) => sum + item.precio * item.cantidad, 0);
+    mensaje += `Pedido para ${tiendaNombre}:\n`;
+    mensaje += productos.map(item => `${item.nombre} x${item.cantidad} - $${(item.precio * item.cantidad).toFixed(2)}`).join('\n');
+    mensaje += `\nTotal: $${totalTienda.toFixed(2)}\n\n`;
+  }
+
   // Añadir datos del cliente al mensaje final
-  const mensajeFinal = `Pedido:\n${mensaje}\nTotal: $${total.toFixed(2)}\n\nDatos del cliente:\nNombre: ${nombre}\nTeléfono: ${telefono}\nUbicación: ${ubicacion}\nInstrucciones adicionales: ${instrucciones}\n\n*Los precios no incluyen delivery*`;
+  mensajeFinal = `${mensaje}Datos del cliente:\nNombre: ${nombre}\nTeléfono: ${telefono}\nUbicación: ${ubicacion}\nInstrucciones adicionales: ${instrucciones}\n\n*Los precios no incluyen delivery*`;
 
   const numeroWhatsApp = '72757591';
   const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensajeFinal)}`;
@@ -73,3 +108,7 @@ document.getElementById('checkout-btn').addEventListener('click', () => {
 
 // Inicializar la página mostrando el carrito
 mostrarCarrito();
+
+
+
+
