@@ -61,7 +61,7 @@ const negocios = [
     id: 2,
     nombre: 'Subway',
     categorias: ['Almuerzo'],
-    logo: 'https://scontent.fsal3-1.fna.fbcdn.net/v/t39.30808-6/405687337_725363336291162_8952362230077025636_n.png?_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=so2OZ2qU95YQ7kNvgHDcawR&_nc_ht=scontent.fsal3-1.fna&_nc_gid=A8iokYGBGIuvI3qfsXetvOX&oh=00_AYCeDgMsLpJrmXcaJxwpCdlzxQQPjWDYc3yc2tZJRfFujw&oe=66EC2A77',
+    logo: '/Subway/LogoSubway.png',
     url: '/Subway/subway.html',
     menu: [
       { id: 11, nombre: 'Subway2', imagen: 'https://pizzapizza.com.sv/wp-content/uploads/2021/01/Pepperoni.jpg', precio: 6.00 },
