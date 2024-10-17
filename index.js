@@ -209,7 +209,6 @@ const contenedor = document.getElementById('negocios-afiliados');
 
     // Función para mostrar todos los negocios
 function mostrarNegocios(negocios) {
-  contenedor.innerHTML = ''; // Limpiar contenido actual
   negocios.forEach((negocio) => {
     contenedor.innerHTML += `
       <div class="negocio" onclick="window.location.href='${negocio.url}'">
