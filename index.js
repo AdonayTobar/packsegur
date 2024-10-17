@@ -170,7 +170,6 @@ const negocios = [
 ];
 
 //Guardando el array de negocios en localstorage
-// Guardar en localStorage
 localStorage.setItem('negocios', JSON.stringify(negocios));
 
 //Declarando el array del carrito
@@ -241,8 +240,6 @@ searchInput.addEventListener('input', function() {
     mostrarNegocios(resultadosFiltrados);
   }
 });
-
-mostrarNegocios();
 console.log(negocios); // Verificar si se muestra el array correctamente
 
 
