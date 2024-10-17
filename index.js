@@ -53,7 +53,6 @@ const negocios = [
   },
 ];
 
-localStorage.setItem('negocios', JSON.stringify(negocios));
 
 // Declaración del carrito y su almacenamiento en localStorage
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
