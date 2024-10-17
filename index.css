@@ -132,6 +132,7 @@ input#search:focus {
 /*Mostrando los negocios del array*/
 .negocios-show {
     margin-top: 7rem;
+    border: 1px solid #b40000;
 }
 #negocios-afiliados {
     display: flex;
@@ -151,6 +152,7 @@ input#search:focus {
     transition: transform 0.3s ease, background-color 0.3s ease;
     cursor: pointer; /* Añade un cursor de mano para indicar que es clicable */
     border-radius: 1rem;
+    border: 1px solid #b40000;
 }
 
 .negocio:hover {
