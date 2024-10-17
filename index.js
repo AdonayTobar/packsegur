@@ -242,5 +242,8 @@ searchInput.addEventListener('input', function() {
   }
 });
 
+mostrarNegocios();
+console.log(negocios); // Verificar si se muestra el array correctamente
+
 
 
