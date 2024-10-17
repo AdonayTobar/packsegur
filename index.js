@@ -209,6 +209,7 @@ const contenedor = document.getElementById('negocios-afiliados');
 
     // Función para mostrar todos los negocios
 function mostrarNegocios(negocios) {
+  contenedor.innerHTML = ''; // Limpiar contenido actual
   negocios.forEach((negocio) => {
     contenedor.innerHTML += `
       <div class="negocio" onclick="window.location.href='${negocio.url}'">
@@ -219,8 +220,10 @@ function mostrarNegocios(negocios) {
   });
 }
 
-// Mostrar todos los negocios al cargar la página
-mostrarNegocios(negocios);
+document.addEventListener('DOMContentLoaded', () => {
+    menu.style.top = "0";
+    mostrarNegocios(); // Asegúrate de que esta función sea llamada
+});
 
 // Escuchar el evento de búsqueda
 searchInput.addEventListener('input', function() {
