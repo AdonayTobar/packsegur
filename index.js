@@ -220,10 +220,6 @@ function mostrarNegocios(negocios) {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    menu.style.top = "0";
-    mostrarNegocios(); // Asegúrate de que esta función sea llamada
-});
 
 // Escuchar el evento de búsqueda
 searchInput.addEventListener('input', function() {
@@ -243,6 +239,8 @@ searchInput.addEventListener('input', function() {
   }
 });
 console.log(negocios); // Verificar si se muestra el array correctamente
+// Mostrar todos los negocios al cargar la página
+mostrarNegocios(negocios);
 
 
 
