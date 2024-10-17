@@ -70,7 +70,7 @@ const negocios = [
     ]
   },
   {
-    id: 1,
+    id: 3,
     nombre: 'Pizza Litte Caesars',
     categorias: ['Pizza', 'Almuerzo'],
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoaORguKiAaXYq2m3P73HXpKEvSZ3bsA5R5A&s',
@@ -82,7 +82,7 @@ const negocios = [
     ]
   },
   {
-    id: 1,
+    id: 4,
     nombre: 'Pizza Litte Caesars',
     categorias: ['Pizza', 'Almuerzo'],
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoaORguKiAaXYq2m3P73HXpKEvSZ3bsA5R5A&s',
@@ -94,7 +94,7 @@ const negocios = [
     ]
   },
   {
-    id: 1,
+    id: 5,
     nombre: 'Pizza Litte Caesars',
     categorias: ['Pizza', 'Almuerzo'],
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoaORguKiAaXYq2m3P73HXpKEvSZ3bsA5R5A&s',
@@ -106,7 +106,7 @@ const negocios = [
     ]
   },
   {
-    id: 1,
+    id: 6,
     nombre: 'Pizza Litte Caesars',
     categorias: ['Pizza', 'Almuerzo'],
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoaORguKiAaXYq2m3P73HXpKEvSZ3bsA5R5A&s',
@@ -118,7 +118,7 @@ const negocios = [
     ]
   },
   {
-    id: 1,
+    id: 7,
     nombre: 'Pizza Litte Caesars',
     categorias: ['Pizza', 'Almuerzo'],
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoaORguKiAaXYq2m3P73HXpKEvSZ3bsA5R5A&s',
@@ -130,7 +130,7 @@ const negocios = [
     ]
   },
   {
-    id: 1,
+    id: 8,
     nombre: 'Pizza Litte Caesars',
     categorias: ['Pizza', 'Almuerzo'],
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoaORguKiAaXYq2m3P73HXpKEvSZ3bsA5R5A&s',
@@ -142,7 +142,7 @@ const negocios = [
     ]
   },
   {
-    id: 1,
+    id: 9,
     nombre: 'Pollo',
     categorias: ['Pollo', 'Almuerzo'],
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoaORguKiAaXYq2m3P73HXpKEvSZ3bsA5R5A&s',
@@ -154,7 +154,7 @@ const negocios = [
     ]
   },
   {
-    id: 1,
+    id: 10,
     nombre: 'Pupusas',
     categorias: ['Cena', 'Almuerzo'],
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoaORguKiAaXYq2m3P73HXpKEvSZ3bsA5R5A&s',
